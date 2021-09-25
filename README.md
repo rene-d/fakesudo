@@ -22,5 +22,6 @@ RUN cc -o /usr/bin/sudo /tmp/fakesudo.c && \
 ```bash
 docker build -t test .
 
-docker run --rm -u $UID:$GID test sh -c 'sudo apt-get update && sudo apt-get install -qq --no-install-recommends moreutils && id | ts'
+docker run --rm -u $UID:$GID test \
+  sh -c 'sudo apt-get update && sudo apt-get install -qq --no-install-recommends moreutils && id | ts'
 ```
