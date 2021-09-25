@@ -63,14 +63,13 @@ int main(int argc, char *argv[])
         if (shift == 0 && arg[0] == '-')
             shift = 1;
 
-        // remove the option
-        if (shift != 0)
-        {
-            argc -= shift;
-            if (argc != 0)
-                memmove(argv + i, argv + i + shift, (argc - i - shift) * sizeof(char *));
-        }
+        if (shift == 0)
+            break;
 
+        // remove the option
+        argc -= shift;
+        if (argc != 0)
+            memmove(argv + i, argv + i + shift, (argc - i - shift) * sizeof(char *));
         i += shift + 1;
     }
 
